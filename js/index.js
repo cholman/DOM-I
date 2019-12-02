@@ -53,18 +53,30 @@ h1.textContent = siteContent["cta"]["h1"];
 const button = document.querySelector("button");
 button.textContent = siteContent["cta"]["button"];
 
-const nav = document.querySelectorAll("nav > a");
+const navItems = document.querySelectorAll("nav > a");
+
+let nav = document.querySelector("nav");
+const aTag = document.createElement("a");
+aTag.textContent = "Prepend";
+aTag.style.color = "green";
+nav.prepend(aTag);
+
+const aTag2 = document.createElement("a");
+aTag2.textContent = "Append";
+aTag2.style.color = "green";
+nav.appendChild(aTag2);
+
 
 let navArr = Object.keys(siteContent.nav).map(function(key) {
   console.log(key);
   return siteContent.nav[key];
 });
 
-console.log(navArr);
-
-nav.forEach((element, index) => {
+navItems.forEach((element, index) => {
   element.textContent = navArr[index];
+  element.style.color = "green";  
 });
+
 
 const mainContent = document.querySelectorAll("h4");
 mainContent[0].textContent = siteContent["main-content"]["features-h4"];
